@@ -1,0 +1,219 @@
+require:
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  Exclude:
+    - db/schema.rb
+    - db/migrate/*.rb
+    - bin/bundle
+    - Gemfile
+    - Rakefile
+    - Gemfile.lock
+    - node_modules/**/*
+    - config/**/*
+    - config.ru
+    - bin/**/*
+    - spec/rails_helper.rb
+    - spec/spec_helper.rb
+  TargetRailsVersion: 7.0
+  TargetRubyVersion: 3.0
+  NewCops: enable
+  SuggestExtensions: false
+
+Rails:
+  Enabled: true
+
+Metrics/BlockLength:
+  IgnoredMethods: ['describe', 'context', 'included', 'resource']
+  Exclude:
+    - db/schema.rb
+    - db/seeds/**/*.rb
+    - config/**/*.rb
+    - spec/**/*.rb
+    - app/api/server/v1/trips_api.rb
+
+Layout/LineLength:
+  Max: 110
+  Enabled: true
+  AutoCorrect: true
+  Exclude:
+    - bin/*
+    - Gemfile
+    - db/migrate/*.rb
+    - db/schema.rb
+    - db/seeds/**.rb
+    - config/**/*.rb
+
+Layout/ArgumentAlignment:
+  Enabled: true
+  AutoCorrect: true
+
+Layout/BlockAlignment:
+  Enabled: true
+  AutoCorrect: true
+
+Layout/BlockEndNewline:
+  Enabled: true
+  AutoCorrect: true
+
+Layout/ClosingParenthesisIndentation:
+  Enabled: true
+  AutoCorrect: true
+
+Layout/FirstArgumentIndentation:
+  Enabled: true
+  AutoCorrect: true
+
+Layout/FirstArrayElementIndentation:
+  Enabled: true
+  AutoCorrect: true
+
+Layout/FirstHashElementIndentation:
+  Enabled: true
+  AutoCorrect: true
+
+Layout/FirstParameterIndentation:
+  Enabled: true
+  AutoCorrect: true
+
+Layout/HashAlignment:
+  Enabled: true
+  AutoCorrect: true
+
+Layout/IndentationWidth:
+  Enabled: true
+  AutoCorrect: true
+
+Layout/MultilineArrayLineBreaks:
+  Enabled: true
+  AutoCorrect: true
+
+Layout/MultilineBlockLayout:
+  Enabled: true
+  AutoCorrect: true
+
+Layout/MultilineHashBraceLayout:
+  Enabled: true
+  AutoCorrect: true
+
+Layout/MultilineHashKeyLineBreaks:
+  Enabled: true
+  AutoCorrect: true
+
+Layout/MultilineMethodArgumentLineBreaks:
+  Enabled: true
+  AutoCorrect: true
+
+Layout/ParameterAlignment:
+  Enabled: true
+  AutoCorrect: true
+
+Layout/IndentationStyle:
+  IndentationWidth: 2
+  EnforcedStyle: spaces
+
+Metrics/ClassLength:
+  Max: 250
+
+Rails/SkipsModelValidations:
+  Exclude:
+    - 'spec/**/*_spec.rb'
+
+Lint/RedundantCopDisableDirective:
+  Enabled: false
+  AutoCorrect: false
+
+Lint/UnusedMethodArgument:
+  Enabled: true
+  AutoCorrect: false
+
+Style/Documentation:
+  Enabled: false
+
+Naming/FileName:
+  Exclude:
+    - Gemfile
+
+Metrics/AbcSize:
+  Exclude:
+    - db/migrate/*.rb
+    - spec/**/*.rb
+
+Metrics/MethodLength:
+  Max: 15
+  Exclude:
+    - db/migrate/*.rb
+    - spec/**/*.rb
+
+Rails/CreateTableWithTimestamps:
+  Exclude:
+    - db/migrate/*.rb
+
+Style/StringLiterals:
+  Enabled: true
+  AutoCorrect: true
+  Exclude:
+    - db/migrate/*.rb
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+  AutoCorrect: true
+  Exclude:
+    - db/migrate/*.rb
+    - db/schema.rb
+
+Style/TrailingCommaInHashLiteral:
+  Enabled: false
+
+Style/TrailingCommaInArrayLiteral:
+  Enabled: false
+
+Style/TrailingCommaInArguments:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Exclude:
+    - spec/**/*.rb
+
+RSpec/MultipleExpectations:
+  Exclude:
+    - spec/**/*.rb
+
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
+
+RSpec/AnyInstance:
+  Enabled: false
+
+Rails/BulkChangeTable:
+  Exclude:
+    - db/migrate/*.rb
+Layout/LeadingCommentSpace:
+  Enabled: true
+  AutoCorrect: true
+
+Layout/IndentationConsistency:
+  EnforcedStyle: indented_internal_methods
+
+RSpec/InstanceVariable:
+  Enabled: false
+
+Lint/Debugger:
+  Exclude:
+    - spec/**/*.rb
+
+Style/OptionalBooleanParameter:
+  Exclude:
+    - spec/**/*.rb
+
+Naming/AccessorMethodName:
+  Exclude:
+    - app/services/**/*.rb
+
+Naming/MemoizedInstanceVariableName:
+  Enabled: false
+
+RSpec/FilePath:
+  Exclude:
+    - spec/requests/server/**/*.rb
