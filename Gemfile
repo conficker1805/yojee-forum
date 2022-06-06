@@ -32,6 +32,9 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'simple_form'
 gem 'slim'
 
+# Database partition
+gem 'pg_party'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -44,6 +47,8 @@ group :development, :test do
 end
 
 group :development do
+  # Database tools
+  gem 'activerecord-analyze'
   # Kill N+1 queries and unused eager loading
   gem 'bullet'
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
