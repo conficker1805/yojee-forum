@@ -2,18 +2,28 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  database: <%= Rails.application.credentials.database[:name] %>
+  username: <%= Rails.application.credentials.database[:username] %>
+  password: <%= Rails.application.credentials.database[:password] %>
   timeout: 5000
 
 development:
-  <<: *default
-  database: yojee_forum_development
+  primary:
+    <<: *default
+  primary_replica:
+    <<: *default
+    replica: true
 
 test:
-  <<: *default
-  database: yojee_forum_test
+  primary:
+    <<: *default
+  primary_replica:
+    <<: *default
+    replica: true
 
 production:
-  <<: *default
-  database: yojee_forum_production
-  username: <%= ENV['DATABASE_USER'] %>
-  password: <%= ENV['DATABASE_PASSWORD'] %>
+  primary:
+    <<: *default
+  primary_replica:
+    <<: *default
+    replica: true
