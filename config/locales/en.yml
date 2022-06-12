@@ -30,4 +30,10 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  flash_message:
+    topic:
+      create:
+        success: A thread has been created.
+    post:
+      create:
+        success: A post has been created.

@@ -6,4 +6,7 @@ class Post < ApplicationRecord
 
   # Associations
   belongs_to :topic, counter_cache: true
+
+  # Validation
+  validates :content, presence: true
 end

@@ -1,7 +1,7 @@
 module Searchable
   extend ActiveSupport::Concern
 
-  ES_INDEX = { number_of_shards: 2 }
+  ES_INDEX = { number_of_shards: 2 }.freeze
   ES_ANALYSIS = {
     analyzer: {
       default: {
@@ -10,7 +10,7 @@ module Searchable
         filter: [:lowercase]
       }
     }
-  }
+  }.freeze
 
   included do
     include Elasticsearch::Model

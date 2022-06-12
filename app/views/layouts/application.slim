@@ -8,5 +8,16 @@ html
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
-  body
-    = yield
+  body#page-wrap
+    .header
+      = render 'layouts/header'
+
+    main.py-5
+      - flash.each do |type, msg|
+        .alert.alert-info
+          = msg
+
+      = yield
+
+    footer.d-flex.justify-content-center.bg-secondary.py-4.text-white
+      = render 'layouts/footer'

@@ -302,6 +302,8 @@ GEM
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
     will_paginate (3.3.1)
+    will_paginate-bootstrap4 (0.2.2)
+      will_paginate (~> 3.0, >= 3.0.0)
     zeitwerk (2.5.4)
 
 PLATFORMS
@@ -339,6 +341,7 @@ DEPENDENCIES
   web-console (>= 4.1.0)
   webpacker (~> 5.0)
   will_paginate (~> 3.3)
+  will_paginate-bootstrap4
 
 RUBY VERSION
    ruby 3.0.4p208

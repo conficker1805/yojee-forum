@@ -1,50 +1,30 @@
-/! Navbar
-nav.navbar.navbar-expand-lg.navbar-light.bg-light
-  .container-fluid
-    a.navbar-brand href="#"  Navbar
-    button.navbar-toggler aria-controls="navbarSupportedContent" aria-expanded="false" aria-label=("Toggle navigation") data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse" type="button"
-      span.navbar-toggler-icon
-    #navbarSupportedContent.collapse.navbar-collapse
-      ul.navbar-nav.me-auto.mb-2.mb-lg-0
-        li.nav-item
-          a.nav-link.active aria-current="page" href="#"  Home
-        li.nav-item
-          a.nav-link href="#"  Link
-        li.nav-item.dropdown
-          a#navbarDropdown.nav-link.dropdown-toggle aria-expanded="false" data-bs-toggle="dropdown" href="#" role="button"
-            | Dropdown
-          ul.dropdown-menu aria-labelledby="navbarDropdown"
-            li
-              a.dropdown-item href="#"  Action
-            li
-              a.dropdown-item href="#"  Another action
-            li
-              hr.dropdown-divider/
-            li
-              a.dropdown-item href="#"  Something else here
-        li.nav-item
-          a.nav-link.disabled aria-disabled="true" href="#" tabindex="-1"  Disabled
-      = simple_form_for :search, url: search_topics_path, method: :get do |f|
-        = f.input :keyword, as: :string, label: false
-        = f.button :submit, 'Search'
-      / form.d-flex
-      /   input.form-control.me-2 aria-label="Search" placeholder="Search" type="search" /
-      /   button.btn.btn-outline-success type="submit"  Search
-/! Tooltips
-button.btn.btn-primary data-bs-placement="top" data-bs-toggle="tooltip" title=("Tooltip on top") type="button"
-  | Tooltip on top
-/! Popover
-button.btn.btn-secondary data-bs-container="body" data-bs-content=("Top popover") data-bs-placement="top" data-bs-toggle="popover" type="button"
-  | Popover on top
-
-
 .container
   .row
     .col-md-12
-      = link_to 'New topic', new_topic_path, class: 'btn btn-secondary txt-center'
+      = link_to 'New thread', new_topic_path, class: 'btn btn-secondary txt-center'
 
-      - @topics.each do |topic|
-        = link_to topic_path(topic.id)
-          h2 = topic.title
-      div = will_paginate(@topics)
+.container
+  .row
+    .col-8
+      ul.topics-table
+        li.topics-header
+          ul.header-titles
+            li Thread
+            li Posts
+            li Created At
+        li.topics-body
+          - @topics.each do |topic|
+            ul.topic-item
+              li = link_to topic.title, topic_path(topic.id)
+              li = topic.posts_count
+              li = time_ago_in_words(topic.created_at)
+      div = will_paginate(@topics, renderer: WillPaginate::ActionView::BootstrapLinkRenderer)
+
+    .col-4
+      ul.popular-table
+        li.topics-body
+          h2 Popuplar Threads
+          - @popular_topics.each do |topic|
+            ul.topic-item
+              li = link_to topic.title, topic_path(topic.id)
 

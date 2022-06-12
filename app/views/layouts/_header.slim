@@ -1,0 +1,7 @@
+nav.navbar.navbar-expand-lg.navbar-light.bg-light.px-5.py-4
+  .col-md-3
+    = link_to 'Yojee Forum', threads_path, class: 'navbar-brand'
+  .col-md-6
+    = simple_form_for :search, url: search_topics_path, method: :get do |f|
+      = f.input :keyword, as: :string, label: false, placeholder: 'Enter a keyword'
+      = f.hidden_field :submit

@@ -32,6 +32,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'simple_form'
 gem 'slim'
 gem 'will_paginate', '~> 3.3'
+gem 'will_paginate-bootstrap4'
 
 # Database partition
 gem 'pg_party'

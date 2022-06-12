@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   root controller: :topics, action: :index, as: :threads
 
   resources :topics, only: %w[index show new create] do
+    resources :posts, only: %w[new create]
+
     get :search, on: :collection
   end
 
-  resources :posts, only: %w[show new create]
 end

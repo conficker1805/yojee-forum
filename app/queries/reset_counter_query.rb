@@ -1,6 +1,6 @@
 class ResetCounterQuery
   def self.call(parent_table, child_table)
-    query = <<-SQL
+    query = <<-SQL.squish
       UPDATE #{parent_table} SET #{child_table}_count = (
         SELECT count(1)
         FROM #{child_table}

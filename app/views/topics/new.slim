@@ -1,7 +1,8 @@
 .container
   .row
     .col-6
+      h2 New Thread
       = simple_form_for @topic, url: topics_path, html: { class: '' } do |f|
         = f.input :title
-        = f.button :submit, 'Submit', class: 'btn btn-secondary'
+        = f.button :submit, 'Submit', class: 'btn btn-secondary mt-2'
 

@@ -1,6 +1,8 @@
 class TopicsController < ApplicationController
+  before_action :fetch_popular_threads, only: %i[index search]
+
   def index
-    @topics = Topic.last(20)
+    @topics = Topic.last(20).paginate(per_page: 20)
   end
 
   def new
@@ -31,15 +33,19 @@ class TopicsController < ApplicationController
 
   protected
 
-  def keyword
-    params.fetch(:search, {}).fetch(:keyword, '').downcase
-  end
+    def fetch_popular_threads
+      @popular_topics = Topic.order(posts_count: :desc, created_at: :desc).limit(10)
+    end
 
-  def topic_params
-    params.require(:topic).permit(:title)
-  end
+    def keyword
+      params.fetch(:search, {}).fetch(:keyword, '').downcase
+    end
 
-  def id
-    params.require(:id)
-  end
+    def topic_params
+      params.require(:topic).permit(:title)
+    end
+
+    def id
+      params.require(:id)
+    end
 end
