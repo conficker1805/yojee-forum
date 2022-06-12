@@ -45,8 +45,6 @@ end
 
 # Create sample data
 5.times do |x|
-  Rails.logger.info("--- Batch #{x}")
-
   # Create sample data for Topic
   values = init_values do |_, date|
     # rubocop:disable Style/StringConcatenation
@@ -73,3 +71,8 @@ end
   sql = 'INSERT INTO questions(content, topic_id, created_at, updated_at) VALUES '
   ActiveRecord::Base.connection.execute(sql + values.join(', '))
 end
+
+
+Topic.import(force: true)
+
+Rake::Task['counter_cache:reset'].invoke

@@ -2,7 +2,7 @@ class TopicsController < ApplicationController
   before_action :fetch_popular_threads, only: %i[index search]
 
   def index
-    @topics = Topic.last(20).paginate(per_page: 20)
+    @topics = Topic.order(created_at: :desc).paginate(page: page, per_page: 20)
   end
 
   def new
