@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_04_063309) do
+ActiveRecord::Schema.define(version: 2022_06_12_100408) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 2022_06_04_063309) do
     t.bigserial "id", null: false
     t.string "title", limit: 255, null: false
     t.datetime "created_at", null: false
+    t.integer "posts_count", default: 0
     t.index ["id"], name: "index_topics_on_id"
   end
 

@@ -5,5 +5,5 @@ class Post < ApplicationRecord
   range_partition_by :topic_id
 
   # Associations
-  belongs_to :topic
+  belongs_to :topic, counter_cache: true
 end
