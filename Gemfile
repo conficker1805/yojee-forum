@@ -31,9 +31,14 @@ gem 'bootsnap', '>= 1.4.4', require: false
 # View
 gem 'simple_form'
 gem 'slim'
+gem 'will_paginate', '~> 3.3'
 
 # Database partition
 gem 'pg_party'
+
+# Elastic search
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -44,6 +49,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 6.0.0.rc1'
   gem 'shoulda-matchers', '~> 3.1'
   gem 'rails-controller-testing'
+  gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 end
 
 group :development do

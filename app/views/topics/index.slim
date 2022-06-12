@@ -24,12 +24,27 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
               a.dropdown-item href="#"  Something else here
         li.nav-item
           a.nav-link.disabled aria-disabled="true" href="#" tabindex="-1"  Disabled
-      form.d-flex
-        input.form-control.me-2 aria-label="Search" placeholder="Search" type="search" /
-        button.btn.btn-outline-success type="submit"  Search
+      = simple_form_for :search, url: search_topics_path, method: :get do |f|
+        = f.input :keyword, as: :string, label: false
+        = f.button :submit, 'Search'
+      / form.d-flex
+      /   input.form-control.me-2 aria-label="Search" placeholder="Search" type="search" /
+      /   button.btn.btn-outline-success type="submit"  Search
 /! Tooltips
 button.btn.btn-primary data-bs-placement="top" data-bs-toggle="tooltip" title=("Tooltip on top") type="button"
   | Tooltip on top
 /! Popover
 button.btn.btn-secondary data-bs-container="body" data-bs-content=("Top popover") data-bs-placement="top" data-bs-toggle="popover" type="button"
   | Popover on top
+
+
+.container
+  .row
+    .col-md-12
+      = link_to 'New topic', new_topic_path, class: 'btn btn-secondary txt-center'
+
+      - @topics.each do |topic|
+        = link_to topic_path(topic.id)
+          h2 = topic.title
+      div = will_paginate(@topics)
+

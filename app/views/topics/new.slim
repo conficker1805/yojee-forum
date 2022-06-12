@@ -1,0 +1,7 @@
+.container
+  .row
+    .col-6
+      = simple_form_for @topic, url: topics_path, html: { class: '' } do |f|
+        = f.input :title
+        = f.button :submit, 'Submit', class: 'btn btn-secondary'
+

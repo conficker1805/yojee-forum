@@ -1,0 +1,20 @@
+.container
+  .row
+    .col-md-12
+      h2 = @topic.title
+
+    .col-md-12.text-center
+      = link_to 'New posts', new_post_path, class: 'btn btn-secondary txt-center'
+
+      h2 List posts
+
+      - @posts.each do |post|
+        = post.content
+        p -------------------------------
+
+      div = will_paginate(@posts)
+
+
+
+
+

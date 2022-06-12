@@ -1,4 +1,8 @@
 class ApplicationController < ActionController::Base
-  def index
+
+  protected
+
+  def page
+    params.fetch(:page, 1)
   end
 end

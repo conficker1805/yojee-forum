@@ -49,7 +49,7 @@ Post.create_partition(start_range: 50_000, end_range: 1_000_000_000_000, name: '
   Rails.logger.info("--- Batch #{x}")
 
   # Create sample data for Topic
-  values = init_values { |i, date| "(#{i}, '#{date}')" }
+  values = init_values { |_, date| "('#{Faker::Marketing.buzzwords}', '#{date}')" }
   sql = 'INSERT INTO topics(title, created_at) VALUES '
   ActiveRecord::Base.connection.execute(sql + values.join(', '))
 
@@ -59,7 +59,7 @@ Post.create_partition(start_range: 50_000, end_range: 1_000_000_000_000, name: '
   ActiveRecord::Base.connection.execute(sql + values.join(', '))
 
   # Create sample data for Question
-  values = init_values { |i, date| "(#{i},#{i},'#{date}','#{date}')" }
+  values = init_values { |i, date| "('#{Faker::Lorem.sentence}',#{i},'#{date}','#{date}')" }
   sql = 'INSERT INTO questions(content, topic_id, created_at, updated_at) VALUES '
   ActiveRecord::Base.connection.execute(sql + values.join(', '))
 end
