@@ -37,14 +37,13 @@ Post.create_partition(start_range: 40_000, end_range: 50_000, name: 'posts_50k')
 Post.create_partition(start_range: 50_000, end_range: 1_000_000_000_000, name: 'posts_over_50k')
 
 def init_values
-  (1..500_000).map do |i|
+  (1..100_000).map do |i|
     date = "2022/#{(1..12).to_a.sample}/15"
     yield(i, date)
   end
 end
 
-# Create sample data
-5.times do |x|
+5.times do
   # Create sample data for Topic
   values = init_values do |_, date|
     # rubocop:disable Style/StringConcatenation
@@ -71,7 +70,6 @@ end
   sql = 'INSERT INTO questions(content, topic_id, created_at, updated_at) VALUES '
   ActiveRecord::Base.connection.execute(sql + values.join(', '))
 end
-
 
 Topic.import(force: true)
 

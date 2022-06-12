@@ -81,4 +81,8 @@ Rails.application.configure do
     Bullet.raise = true # raise an error if n+1 query occurs
     Bullet.unused_eager_loading_enable = false
   end
+
+  config.active_record.database_selector = { delay: 2.seconds }
+  config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
+  config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 end

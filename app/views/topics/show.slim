@@ -10,5 +10,5 @@
           ul.d-flex.justity-content-start.mb-2
             = link_to 'Add more', new_topic_post_path(@topic), class: 'btn btn-secondary txt-center'
           - @posts.each do |post|
-            ul.topic-item
+            ul.topic-item.text-start
               = post.content

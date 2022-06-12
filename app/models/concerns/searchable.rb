@@ -1,7 +1,7 @@
 module Searchable
   extend ActiveSupport::Concern
 
-  ES_INDEX = { number_of_shards: 2 }.freeze
+  ES_INDEX = { number_of_shards: 1 }.freeze
   ES_ANALYSIS = {
     analyzer: {
       default: {
@@ -15,6 +15,8 @@ module Searchable
   included do
     include Elasticsearch::Model
     include Elasticsearch::Model::Callbacks
+
+    Rails.env.test? && index_name("#{Rails.env}_#{model_name.collection.gsub('/', '-')}")
   end
 
   class_methods do

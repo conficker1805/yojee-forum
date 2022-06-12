@@ -1,8 +1,10 @@
 class TopicsController < ApplicationController
-  before_action :fetch_popular_threads, only: %i[index search]
+  before_action :fetch_popular_toptics, only: %i[index search]
 
   def index
-    @topics = Topic.order(created_at: :desc).paginate(page: page, per_page: 20)
+    @topics = Topic.where(created_at: 1.month.ago..Time.current)
+                   .order(created_at: :desc)
+                   .paginate(page: 1, per_page: 20)
   end
 
   def new
@@ -21,7 +23,7 @@ class TopicsController < ApplicationController
 
   def show
     @topic = Topic.includes(:posts).find(id)
-    @posts = @topic.posts.order(id: :desc).paginate(page: page, per_page: 5)
+    @posts = @topic.posts.order(id: :desc).paginate(page: page)
   end
 
   def search
@@ -33,8 +35,12 @@ class TopicsController < ApplicationController
 
   protected
 
-    def fetch_popular_threads
-      @popular_topics = Topic.order(posts_count: :desc, created_at: :desc).limit(10)
+    def fetch_popular_toptics
+      topics_attrs = Rails.cache.fetch('topics:popular', expires_in: 1.minute) do
+        Topic.order(posts_count: :desc, created_at: :desc).limit(10).map(&:attributes)
+      end
+
+      @popular_topics = topics_attrs.map { |attrs| Topic.new(attrs) }
     end
 
     def keyword
