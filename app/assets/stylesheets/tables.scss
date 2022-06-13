@@ -1,0 +1,24 @@
+.topics-table {
+  margin-top: 1rem;
+  padding: 8px;
+  border: 2px solid cadetblue;
+  border-radius: 10px;
+}
+
+ul.header-titles, li.topics-body, li.topics-body ul {
+  overflow: hidden;
+}
+
+ul.topic-item {
+  border-top: 1px solid cadetblue;
+}
+
+.topics-table {
+  .header-titles li, ul.topic-item li {
+    flex: 1;
+
+    &:first-child {
+      flex: 3;
+    }
+  }
+}

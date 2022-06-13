@@ -7,14 +7,14 @@
   .row
     .col-8
       ul.topics-table
-        li.topics-header
-          ul.header-titles
+        li.topics-header.p-2
+          ul.header-titles.d-flex
             li Thread
             li Posts
             li Created At
         li.topics-body
           - @topics.each do |topic|
-            ul.topic-item
+            ul.topic-item.d-flex.p-2
               li = link_to topic.title, topic_path(topic.id)
               li = topic.posts_count
               li = time_ago_in_words(topic.created_at)
@@ -25,6 +25,6 @@
         li.topics-body
           h2 Popuplar Threads
           - @popular_topics.each do |topic|
-            ul.topic-item
+            ul.topic-item.d-flex.p-2
               li = link_to topic.title, topic_path(topic.id)
 
