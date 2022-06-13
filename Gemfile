@@ -41,6 +41,9 @@ gem 'pg_party'
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 
+# Seeds
+gem 'faker'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -50,7 +53,6 @@ group :development, :test do
   gem 'rspec-rails', '~> 6.0.0.rc1'
   gem 'shoulda-matchers', '~> 3.1'
   gem 'rails-controller-testing'
-  gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 end
 
 group :development do
