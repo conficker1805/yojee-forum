@@ -41,6 +41,14 @@ gem 'pg_party'
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 
+# Deploy
+gem 'capistrano', '~> 3.17.0'
+gem 'capistrano-rvm', group: :development
+gem 'capistrano-rails', '~> 1.4.0'
+gem 'capistrano-bundler', '~> 1.6.0'
+gem 'capistrano-passenger'
+gem 'capistrano-webpacker-precompile', require: false
+
 # Seeds
 gem 'faker'
 

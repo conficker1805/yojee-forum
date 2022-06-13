@@ -37,7 +37,7 @@ Post.create_partition(start_range: 40_000, end_range: 50_000, name: 'posts_50k')
 Post.create_partition(start_range: 50_000, end_range: 1_000_000_000_000, name: 'posts_over_50k')
 
 def init_values
-  (1..100_000).map do |i|
+  (1..1_000).map do |i|
     date = "2022/#{(1..12).to_a.sample}/15"
     yield(i, date)
   end
