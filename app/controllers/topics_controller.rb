@@ -4,7 +4,7 @@ class TopicsController < ApplicationController
   def index
     @topics = Topic.where(created_at: 1.month.ago..Time.current)
                    .order(created_at: :desc)
-                   .paginate(page: 1, per_page: 20)
+                   .paginate(page: page, per_page: 20)
   end
 
   def new
