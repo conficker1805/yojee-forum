@@ -2,9 +2,11 @@ class TopicsController < ApplicationController
   before_action :fetch_popular_toptics, only: %i[index search]
 
   def index
-    @topics = Topic.where(created_at: 1.month.ago..Time.current)
-                   .order(created_at: :desc)
-                   .paginate(page: page, per_page: 20)
+    ActiveRecord::Base.connected_to(role: :reading) do
+      @topics = Topic.where(created_at: 1.month.ago..Time.current)
+                     .order(created_at: :desc)
+                     .paginate(page: page, per_page: 20)
+    end
   end
 
   def new
