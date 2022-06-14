@@ -59,9 +59,8 @@ This can speed up queries on to created_at, for example:
 - Filtering
 - ...
 
-Instead of `Seq scan` every single record, pg will scan on the specific partition(s). The `Execution time` will be lower.
-
-![img](/assets/images/tux.png)
+Instead of `Seq scan` every single record, pg will do Parallel scan on the specific partition(s). The `Execution time` will be lower.
+![img](https://lh5.googleusercontent.com/NFMYreVU44RY1d8DRFuQOR61ndOWDGBeRmitjFL7fhmnCtorolNkghnxjJsqsLvxq-eff4ccDtupP8ENz8u7=w3584-h2032-rw)
 
 **Table post**: Split base on range of id. eg:  
 - Partition **posts_10k** contains records which has id from **1** to **9999**
