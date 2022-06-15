@@ -3,6 +3,7 @@
 ## What I did do?
 - Create a RoR app (Rails v6.1.6, ruby-3.0.4)
 - A simple UI to create Threads, Posts
+- Setup a scaleable database
 - Showing "Top popular threads"
 - Unit tests & rubocop
 - Setup & deploy the app to AWS ([http://3.0.19.238/](http://3.0.19.238/))
