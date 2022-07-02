@@ -6,7 +6,7 @@
 - Setup a scaleable database
 - Showing "Top popular threads"
 - Unit tests & rubocop
-- Setup & deploy the app to AWS ([http://3.0.19.238/](http://3.0.19.238/))
+- Setup & deploy the app to AWS (Stopped)
 
 ## Required
 - [Redis](https://redis.io/)
